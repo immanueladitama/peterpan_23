@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JangkaPanjang;
+use App\Models\JangkaPendek;
 use Illuminate\Http\Request;
 use App\Models\ruangan;
 use App\Models\peminjam;
@@ -15,8 +17,9 @@ class tampilan_controller extends Controller
     }
 
     public function indexhomedosen(){
-        $data_ruangandosen = ruangandosen::all();
-        return view('admin.peminjamdosen',compact('data_ruangandosen'));
+        $panjangs = JangkaPanjang::all();
+        $pendeks = JangkaPendek::all();
+        return view('admin.peminjamdosen',compact('panjangs', 'pendeks'));
     }
 
     public function indexkalendar(){

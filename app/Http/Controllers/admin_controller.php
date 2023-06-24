@@ -131,4 +131,9 @@ class admin_controller extends Controller
         return view('user.loginadmin');
     }
 
+    // public function indexvalidasi($id, Request $request)
+    // {
+
+    // }
+
 }

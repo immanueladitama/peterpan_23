@@ -38,6 +38,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <i class="fa fa-home w3-xxlarge"></i>
     <p>HOME</p>
   </a>
+  <a href="/pinjamruangan" class="w3-bar-item w3-button w3-padding-large w3-hover-orange">
+    <i class="fa fa-building w3-xxlarge"></i>
+    <p>DAFTAR RUANGAN</p>
+  </a>
   <a href="/loginmahasiswa" class="w3-bar-item w3-button w3-padding-large w3-hover-orange">
     <i class="fa fa-sign-out w3-xxlarge"></i>
     <p>LOGOUT</p>
@@ -206,7 +210,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 </div>
 </div>
 </div>
-<section class="ftco-section">
+{{-- <section class="ftco-section">
 		<div class="container">
 			
     <div class="w3-content w3-justify w3-text-black w3-padding-64" style="margin-left:100px;margin-top:43px;">
@@ -243,8 +247,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
       </div>
        
       </div>
-				      </div>
-				    </div>
+				      </div> --}}
+				    {{-- </div> --}}
 				   
 				   
 

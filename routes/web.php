@@ -43,6 +43,10 @@ route::get('/loginmahasiswa','peminjam_controller@userlogin');
 route::get('/logindosen','peminjam_controller@dosenlogin');
 route::get('/loginadmin','admin_controller@adminlogin');
 route::get('/filterruangan','admin_controller@filterstatus');
-route::get('/validasi','admin_controller@indexvalidasi');
+route::put('/validasi/{id}','admin_controller@indexvalidasi');
 route::get('/dosenhomepage','admin_controller@indexpeminjamdosen');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

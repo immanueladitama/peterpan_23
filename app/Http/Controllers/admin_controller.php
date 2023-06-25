@@ -8,6 +8,8 @@ use App\Models\ruangandosen;
 use App\Models\peminjamdosen;
 use App\Models\peminjam;
 use App\Models\dosen;
+use App\Models\JangkaPanjang;
+use App\Models\JangkaPendek;
 
 class admin_controller extends Controller
 {
@@ -131,9 +133,30 @@ class admin_controller extends Controller
         return view('user.loginadmin');
     }
 
-    // public function indexvalidasi($id, Request $request)
-    // {
+    public function indexvalidasi($id, Request $request)
+    {
+        if ($request->type == 'panjang') {
+            JangkaPanjang::find($id)->update([
+                'status' => $request->status
+            ]);
+        }else{
+            JangkaPendek::find($id)->update([
+                'status' => $request->status
+            ]);
+        }
 
-    // }
+        return redirect()->back();
+    }
+
+    public function deletepeminjaman($id, Request $request)
+    {
+        if ($request->type == 'panjang') {
+            JangkaPanjang::find($id)->delete();
+        }else{
+            JangkaPendek::find($id)->delete();
+        }
+
+        return redirect()->back();
+    }
 
 }

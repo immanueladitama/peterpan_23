@@ -43,7 +43,8 @@ route::get('/loginmahasiswa','peminjam_controller@userlogin');
 route::get('/logindosen','peminjam_controller@dosenlogin');
 route::get('/loginadmin','admin_controller@adminlogin');
 route::get('/filterruangan','admin_controller@filterstatus');
-route::put('/validasi/{id}','admin_controller@indexvalidasi');
+route::put('/validasi/{id}','admin_controller@indexvalidasi')->name('peminjaman.validasi');
+route::delete('/delete/{id}','admin_controller@deletepeminjaman')->name('peminjaman.delete');
 route::get('/dosenhomepage','admin_controller@indexpeminjamdosen');
 
 

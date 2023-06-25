@@ -38,10 +38,14 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <i class="fa fa-building w3-xxlarge"></i>
     <p>DAFTAR RUANGAN</p>
   </a>
-   <a href="/logindosen" class="w3-bar-item w3-button w3-padding-large w3-hover-orange">
+  <a href="{{ route('logout') }}" onclick="event.preventDefault();
+  document.getElementById('logout-form').submit();" class="w3-bar-item w3-button w3-padding-large w3-hover-orange">
     <i class="fa fa-sign-out w3-xxlarge"></i>
     <p>LOGOUT</p>
   </a>
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+    @csrf
+</form>
 </nav>
 
 
@@ -322,9 +326,22 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
         <td>
           {{$item->status}}
         </td>
-        <td>
+        <td class="d-flex">
           @if (Auth::user()->role == 'admin')
-              Halo
+              <form action="{{ route('peminjaman.validasi', $item->id) }}" method="post">
+                @csrf
+                @method('put')
+                <input type="hidden" name="type" value="pendek">
+                <input type="hidden" name="status" value="disetujui">
+                <button class="btn btn-success">Setujui</button>
+              </form>
+              <form action="{{ route('peminjaman.delete', $item->id) }}" method="post">
+                @csrf
+                @method('delete')
+                <input type="hidden" name="type" value="pendek">
+                {{-- <input type="hidden" name="status" value="disetujui"> --}}
+                <button class="btn btn-danger">Hapus Peminjaman</button>
+              </form>
           @endif          
         </td>
         </tr>
@@ -380,6 +397,24 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
             </td> 
             <td>
               {{$item->status}}
+            </td>
+            <td class="d-flex">
+              @if (Auth::user()->role == 'admin')
+              <form action="{{ route('peminjaman.validasi', $item->id) }}" method="post">
+                @csrf
+                @method('put')
+                <input type="hidden" name="type" value="panjang">
+                <input type="hidden" name="status" value="disetujui">
+                <button class="btn btn-success">Setujui</button>
+              </form>
+              <form action="{{ route('peminjaman.delete', $item->id) }}" method="post">
+                @csrf
+                @method('delete')
+                <input type="hidden" name="type" value="panjang">
+                {{-- <input type="hidden" name="status" value="disetujui"> --}}
+                <button class="btn btn-danger">Hapus Peminjaman</button>
+              </form>
+          @endif          
             </td>
             </tr>
             @endforeach

@@ -42,10 +42,14 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <i class="fa fa-building w3-xxlarge"></i>
     <p>DAFTAR RUANGAN</p>
   </a>
-  <a href="/loginmahasiswa" class="w3-bar-item w3-button w3-padding-large w3-hover-orange">
+  <a href="{{ route('logout') }}" onclick="event.preventDefault();
+  document.getElementById('logout-form').submit();" class="w3-bar-item w3-button w3-padding-large w3-hover-orange">
     <i class="fa fa-sign-out w3-xxlarge"></i>
     <p>LOGOUT</p>
   </a>
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+    @csrf
+</form>
 </nav>
 
 

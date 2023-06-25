@@ -1,77 +1,95 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <link rel="stylesheet" href="{{asset('loginasset/fonts/icomoon/style.css')}}">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <link rel="stylesheet" href="{{asset('loginasset/css/owl.carousel.min.css')}}">
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{asset('loginasset/css/bootstrap.min.css')}}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{{asset('loginasset/css/style.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    <title>Login</title>
+  </head>
+  <body>
+  
+  
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+  <div class="d-lg-flex half">
+    
+    <div class="bg order-1 order-md-2" style="background-image: url('asset/images/homelogin.jpg');"></div>
+    <div class="contents order-2 order-md-1">
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+          <h3 class="text-center"><strong> Selamat Datang </strong></h3>
+          <h3 class="text-center"><strong> Sistem Peminjaman Ruangan UKDW</strong></h3>
+          <form action="{{ route('register') }}" method="post">
+            @csrf
+            <p class="mb-4 text-center"><strong></strong></p>
+              <div class="form-group first">
+                <label for="username" style="color: #ffff;">Email</label>
+                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="" id="username" required autocomplete="email" autofocus>
+              </div>
+              <div class="form-group first">
+                <label for="username" style="color: #ffff;">Name</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="email" placeholder="" id="username" required autocomplete="email" autofocus>
+              </div>
+              <div class="form-group last mb-3">
+                <label for="password" style="color: #ffff;">Password</label>
+                <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="" id="password" name="password" required autocomplete="current-password">
+              </div>
+              <div class="form-group last mb-3">
+                <label for="password" style="color: #ffff;">Password Confirmation</label>
+                <input type="password" class="form-control" placeholder="" id="password_confirm" name="password_confirmation" required autocomplete="current-password">
+              </div>
+              <div class="form-group last mb-3">
+                <label for="password" style="color: #ffff;">Role</label>
+                {{-- <input type="password" class="form-control" placeholder="" id="password" name="password" required autocomplete="current-password"> --}}
+                <select name="role" id="" class="form-control">
+                    <option value="">Choose Role...</option>
+                    <option value="dosen">Dosen</option>
+                    <option value="mahasiswa">Mahasiswa</option>
+                </select>
+              </div>
+              
+             
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+              {{-- <a href="/dosenhomepage"><button type="submit"class="btn btn-danger btn-block">Log In</button></a> --}}
+              <br>
+              <button class="btn btn-danger btn-block">Register</button>
+              {{-- <a type="button" class="btn  btn-danger btn-block" href="">Register</a> --}}
+              <hr width="100%" noshade size="25%" style="color:#BB0A1E">
+            </form>
+              <!-- <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with <b>Google</b></a> -->
+               <!-- tambahkan script di bawah ini untuk membuat tombol signin google -->
+                
+          </div>
         </div>
+      </div>
     </div>
-</div>
-@endsection
+    
+    
+  </div>
+    
+    
+
+    <script src="{{asset('loginasset/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('loginasset/js/popper.min.js')}}"></script>
+    <script src="{{asset('loginasset/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('loginasset/js/main.js')}}"></script>
+  </body>
+</html>
